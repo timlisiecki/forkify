@@ -32,3 +32,9 @@ export const deleteLike = id => {
     const el = document.querySelector(`.likes__link[href*="${id}"]`).parentElement;
     if (el) el.parentElement.removeChild(el);
 }
+
+export const deleteLikesList = () => {
+    const elems = document.querySelectorAll('.likes__link');
+
+    elems.forEach(el => el.parentElement.removeChild(el));
+}

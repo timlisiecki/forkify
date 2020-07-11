@@ -174,12 +174,27 @@ const controlLike = () => {
 window.addEventListener('load', () => {
     state.likes = new Likes();
     // Restores likes
-    state.likes.readStorage();
+    if(state.likes) state.likes.readStorage();
     // Toggle the like menu button
     likesView.toggleLikeMenu(state.likes.getNumLikes());
     // Render the existing likes
     state.likes.likes.forEach(like => likesView.renderLike(like));
 });
+
+// Delete likes list on click
+elements.likes.addEventListener('click', e => {
+    if (e.target.matches('.likes__btn--remove')) {
+        // Clear the likes list from localStorage
+        console.log(state.likes);
+        state.likes.clearLikesList();
+        console.log(state.likes);
+        // Toggle the like menu button
+        likesView.toggleLikeMenu(state.likes.getNumLikes());
+        // Clear the likes from the list view
+        likesView.deleteLikesList();
+        likesView.toggleLikeBtn();
+    }
+})
 
 // Handling recipe button clicks
 elements.recipe.addEventListener('click', e => {

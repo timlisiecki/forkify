@@ -41,4 +41,9 @@ export default class Likes {
         // Restore likes from localStorage
         if (storage) this.likes = storage;
     }
+
+    clearLikesList() {
+        this.likes = [];
+        this.persistData();
+    }
 }

@@ -221,6 +221,15 @@ body {
     visibility: hidden;
     opacity: 0;
     transition: all .5s .2s; }
+  .likes__btn--remove {
+    padding: 0 2rem;
+    text-align: right;
+    color: #bbbbbb;
+    font-size: 1.1rem; }
+  .likes__btn--remove:hover {
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s; }
 
 .results,
 .likes {
