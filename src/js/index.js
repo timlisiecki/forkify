@@ -108,7 +108,6 @@ const controlRecipe = async () => {
 */
 const controlList = () => {
     // Create a new list if none yet
-
     if (!state.list) state.list = new List();
 
     // Add each ingredient to the list and UI
@@ -119,7 +118,7 @@ const controlList = () => {
 }
 
 // Handle delete and update list item events
-elements.shopping.addEventListener('click', e => {
+elements.shoppingList.addEventListener('click', e => {
     const id = e.target.closest('.shopping__item').dataset.itemid;
 
     // Handle delete buttin
@@ -134,6 +133,24 @@ elements.shopping.addEventListener('click', e => {
         const val = parseFloat(e.target.value, 10);
 
         state.list.updateCount(id, val);
+    }
+});
+
+// Restore shopping list on page load
+window.addEventListener('load', () => {
+    state.list = new List();
+    // Restores likes
+    if(state.list) state.list.readStorage();
+    // Render the existing list
+    state.list.items.forEach(item => listView.renderItem(item));
+});
+
+// Handle clear cart
+elements.shopping.addEventListener('click', e => {
+    // Clear cart from UI
+    if (e.target.matches('.shopping__list--remove')) {
+        state.list.clearList();
+        listView.clearCart();
     }
 });
 
@@ -185,9 +202,7 @@ window.addEventListener('load', () => {
 elements.likes.addEventListener('click', e => {
     if (e.target.matches('.likes__btn--remove')) {
         // Clear the likes list from localStorage
-        console.log(state.likes);
         state.likes.clearLikesList();
-        console.log(state.likes);
         // Toggle the like menu button
         likesView.toggleLikeMenu(state.likes.getNumLikes());
         // Clear the likes from the list view

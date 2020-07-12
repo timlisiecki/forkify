@@ -14,7 +14,9 @@
 <body>
     <div class="container">
         <header class="header">
-            <img src="img/logo.png" alt="Logo" class="header__logo">
+            <a href="/">
+                <img src="img/logo.png" alt="Logo" class="header__logo">
+            </a>
             <div>
                 <form class="search">
                     <input type="text" class="search__field" placeholder="Search over 1,000,000 recipes...">
@@ -44,13 +46,21 @@
 
         <!-- Display recipe list -->
         <div class="results">
+            <h2 class="heading-2">Search Results</h2>
             <ul class="results__list"></ul>
 
             <div class="results__pages"></div>
         </div>
 
         <!-- Display recipe -->
-        <div class="recipe"></div>
+        <div class="recipe">
+            <div>
+                <figure class="recipe__fig" style="height: 9rem;">
+                    <h1 class="recipe__title"><span>Welcome to Forkify!</span></h1>
+                </figure>
+                <p class="recipe__directions-text" style="margin: 6rem auto;">Search for recipes, save the ones you love, and add the ingredients to the shopping cart!</p>
+            </div>
+        </div>
 
         <div class="shopping">
             <h2 class="heading-2">My Shopping List</h2>
