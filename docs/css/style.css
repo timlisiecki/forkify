@@ -221,15 +221,18 @@ body {
     visibility: hidden;
     opacity: 0;
     transition: all .5s .2s; }
-  .likes__btn--remove {
+  .likes__btn--remove,
+  .shopping__list--remove {
+    margin-top: 1rem;
     padding: 0 2rem;
     text-align: right;
     color: #bbbbbb;
     font-size: 1.1rem; }
-  .likes__btn--remove:hover {
+  .likes__btn--remove:hover,
+  .shopping__list--remove:hover {
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s; }
+    transition: all 0.3s ease-in-out; }
 
 .results,
 .likes {
