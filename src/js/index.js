@@ -39,9 +39,15 @@ const controlSearch = async () => {
 
             // 5) Render results on the UI
             clearLoader();
+            elements.searchForm.classList.remove('search--error');
+            elements.searchErrorMsg.innerHTML = '';
+            elements.searchErrorMsg.style.visibility = 'hidden';
             searchView.renderResults(state.search.result);
         } catch (error) {
-            alert('Something wrong with the search ...');
+            // alert('Something wrong with the search ...');
+            elements.searchForm.classList.add('search--error');
+            elements.searchErrorMsg.innerHTML = '<p style="padding-top: 0.5rem; font-size: 1rem; color: rgba(255, 0, 0, 0.8);">Recipe not found. Try searching for something else or use a suggested query from the link below.</p>';
+            elements.searchErrorMsg.style.visibility = 'visible';
             clearLoader();
         }
     }
@@ -96,7 +102,9 @@ const controlRecipe = async () => {
             );
         } catch (error) {
             console.log(error);
-            alert('Error processing recipe.');
+            console.log('Error processing recipe.');
+            clearLoader();
+            elements.recipe.innerHTML = '<p style="margin: 1rem 2rem; font-size: 1.5rem; color: rgba(255, 0, 0, 0.8);">Recipe not found. Please search <a href="https://forkify-api.herokuapp.com/phrases.html" target="_blank">here</a> for another recipe using the list of available search queries.</p>'
         }
     }
 }
